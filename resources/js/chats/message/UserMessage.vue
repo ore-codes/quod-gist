@@ -1,8 +1,8 @@
 <template>
     <div class="m-2 ml-8 p-2 bg-gray-200 border-2 rounded">
         <pre :style="`color: ${server.color}`"><slot><!--message--></slot></pre>
-        <details>
-            <summary>...</summary>
+        <details class="border-t">
+            <summary class="text-sm">Options</summary>
             <message-options></message-options>
         </details>
     </div>

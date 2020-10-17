@@ -3544,16 +3544,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("button", [
-    _c(
-      "svg",
-      {
-        staticClass:
-          "w-12 h-12 bg-gray-200 text-gray-900 hover:bg-gray-600 hover:text-white"
-      },
-      [_c("use", { attrs: { "xlink:href": "#" + _vm.id } })]
-    )
-  ])
+  return _c(
+    "button",
+    {
+      staticClass:
+        "p-2 rounded-sm bg-gray-200 text-gray-900 hover:bg-gray-600 hover:text-white"
+    },
+    [
+      _c("svg", { staticClass: "w-4 h-4" }, [
+        _c("use", { attrs: { "xlink:href": "#" + _vm.id } })
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -3654,7 +3656,7 @@ var render = function() {
         "div",
         { key: message.id, staticClass: "self-stretch" },
         [
-          _vm.isUserMessage
+          _vm.isUserMessage(message)
             ? _c("user-message", [_vm._v(_vm._s(message.content))])
             : _c("message", { attrs: { author: message.author } }, [
                 _vm._v(_vm._s(message.content))
@@ -3701,7 +3703,12 @@ var render = function() {
       _vm._v(" "),
       _c(
         "details",
-        [_c("summary", [_vm._v("...")]), _vm._v(" "), _c("message-options")],
+        { staticClass: "border-t" },
+        [
+          _c("summary", { staticClass: "text-sm" }, [_vm._v("Options")]),
+          _vm._v(" "),
+          _c("message-options")
+        ],
         1
       )
     ]

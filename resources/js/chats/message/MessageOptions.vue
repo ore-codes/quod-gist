@@ -7,6 +7,7 @@
 
 <script>
     import IconButton from "../IconButton";
+
     export default {
         components: {
             IconButton,

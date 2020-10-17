@@ -1,7 +1,7 @@
 <template>
     <div class="flex-grow flex flex-col items-center justify-end">
         <div class="self-stretch" v-for="message in messages" :key="message.id">
-            <user-message v-if="isUserMessage">{{ message.content }}</user-message>
+            <user-message v-if="isUserMessage(message)">{{ message.content }}</user-message>
             <message v-else :author="message.author">{{ message.content }}</message>
         </div>
     </div>
