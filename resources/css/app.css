@@ -1,3 +1,19 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.app-header {
+    @apply font-semibold text-xl text-gray-800 leading-tight;
+}
+
+.welcome-art {
+    background: url("../images/welcome-art.png") no-repeat right / contain;
+}
+
+.min-h-screen-4\/5 {
+    min-height: 80vh;
+}
+
+.svg-icon {
+    @apply w-8 h-8;
+}

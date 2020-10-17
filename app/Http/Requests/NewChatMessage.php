@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Server;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class NewChatMessage extends FormRequest
 {
@@ -13,7 +15,10 @@ class NewChatMessage extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        $server = Server::find($this->route('server'));
+        return Auth::check() &&
+            $server &&
+            $server->members->contains(Auth::user());
     }
 
     /**
@@ -24,7 +29,14 @@ class NewChatMessage extends FormRequest
     public function rules()
     {
         return [
-            //
+            'message' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'message.required' => 'A message is required'
         ];
     }
 }

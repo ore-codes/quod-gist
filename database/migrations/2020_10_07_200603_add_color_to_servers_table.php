@@ -14,7 +14,7 @@ class AddColorToServersTable extends Migration
     public function up()
     {
         Schema::table('servers', function (Blueprint $table) {
-            //
+            $table->string('color', 10);
         });
     }
 
@@ -25,8 +25,10 @@ class AddColorToServersTable extends Migration
      */
     public function down()
     {
-        Schema::table('servers', function (Blueprint $table) {
-            //
+        Schema::create('servers', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 }

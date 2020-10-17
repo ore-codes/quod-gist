@@ -14,7 +14,7 @@ class ChangeMessagesContentLengthAndType extends Migration
     public function up()
     {
         Schema::table('messages', function (Blueprint $table) {
-            //
+            $table->longText('content')->change();
         });
     }
 
@@ -26,7 +26,7 @@ class ChangeMessagesContentLengthAndType extends Migration
     public function down()
     {
         Schema::table('messages', function (Blueprint $table) {
-            //
+            $table->string('content');
         });
     }
 }

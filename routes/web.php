@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ServerController;
+use App\Http\Controllers\ServerMemberController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +20,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/chats', function () {
-    return view('chat');
-})->name('chat');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/servers/{id}/members/join', [ServerMemberController::class, 'join'])
+        ->name('server_members.join');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+    Route::post('/server/{id}/members', [ServerMemberController::class, 'add'])
+        ->name('server_members.add');
+
+    Route::resource('servers', ServerController::class);
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+Route::get('/servers/{server}/messages', [MessageController::class, 'index']);
+Route::post('/servers/{server}/messages', [MessageController::class, 'store']);

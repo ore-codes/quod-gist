@@ -14,8 +14,12 @@ class CreateServerUserTable extends Migration
     public function up()
     {
         Schema::create('server_user', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->timestamp('joinedAt');
+            $table->unsignedBigInteger('server_id');
+            $table->unsignedBigInteger('user_id');
+
+            $table->foreign('server_id')->references('id')->on('servers');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

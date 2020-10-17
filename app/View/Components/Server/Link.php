@@ -2,24 +2,27 @@
 
 namespace App\View\Components\Server;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Link extends Component
 {
+    public $server;
+
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param $server
      */
-    public function __construct()
+    public function __construct($server)
     {
-        //
+        $this->server = $server;
     }
 
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|string
+     * @return View|string
      */
     public function render()
     {

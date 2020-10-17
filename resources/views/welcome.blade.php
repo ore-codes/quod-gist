@@ -1,21 +1,18 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ config('app.name', 'QuodGist') }}
-        </h2>
-    </x-slot>
+<x-guest-layout>
+    <header class="px-8 py-4 shadow-sm">
+        @include('svg-sprite')
+        <x-jet-application-mark class="inline h-9 w-9" />
+        <h1 class="inline font-bold text-2xl text-gray-800 leading-tight">{{ config('app.name', 'QuodGist') }}</h1>
+    </header>
 
-    @if (Route::has('login'))
-        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-            @auth
-                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
-            @else
-                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                @endif
-            @endif
+    <main class="flex flex-wrap p-16 min-h-screen items-stretch">
+        <div class="w-full text-3xl md:text-5xl text-gray-500 md:w-1/2">
+            <h2 class="my-4">Welcome to QuodGist, the discussion forum for true coders.</h2>
+            <div class="flex flex-col items-center md:flex-row gap-4 w-full py-4">
+                <a href="{{ route('register') }}"><x-jet-button class="text-sm md:text-3xl capitalize">Create an account</x-jet-button></a>
+                <a href="{{ route('login') }}"><x-jet-button class="text-sm md:text-3xl capitalize">Log in</x-jet-button></a>
+            </div>
         </div>
-    @endif
-</x-app-layout>
+        <p class="welcome-art w-full md:w-1/2 h-96"></p>
+    </main>
+</x-guest-layout>

@@ -14,7 +14,7 @@ class ChangeServersNameLength extends Migration
     public function up()
     {
         Schema::table('servers', function (Blueprint $table) {
-            //
+            $table->string('name', 50)->change();
         });
     }
 
@@ -26,7 +26,7 @@ class ChangeServersNameLength extends Migration
     public function down()
     {
         Schema::table('servers', function (Blueprint $table) {
-            //
+            $table->string('name');
         });
     }
 }

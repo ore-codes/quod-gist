@@ -4,9 +4,10 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
+                <div class="flex-shrink-0 flex justify-between items-center py-10">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <x-jet-application-mark class="inline-block h-9 w-9" />
+                        <h1 class="inline-block ml-2 font-bold text-3xl text-gray-700">{{ config('app.name')  }}</h1>
                     </a>
                 </div>
 

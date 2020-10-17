@@ -1,31 +1,19 @@
 <template>
-    <div class="message self-stretch m-2 p-2 border-2 rounded" :style="cssVars">
+    <div class="m-2 mr-8 p-2 border-2 rounded" :style="`border-color: ${server.color}`">
         <h5 class="font-bold text-xl m-2 text-gray-500">{{ author.name }}</h5>
-        <pre>{{ content }}</pre>
+        <pre><slot><!--message--></slot></pre>
     </div>
 </template>
 
 <script>
-    import { mapState } from 'vuex';
+    import {mapState} from 'vuex';
 
     export default {
         props: {
             author: Object,
-            content: String,
         },
         computed: {
-            ...mapState(['server', 'user']),
-            cssVars() {
-                return {
-                    '--server-color': this.server.color,
-                }
-            },
+            ...mapState(['server'])
         }
     }
 </script>
-
-<style scoped>
-    .message {
-        border-color: var(--server-color);
-    }
-</style>

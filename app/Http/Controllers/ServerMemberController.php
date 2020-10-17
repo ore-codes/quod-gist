@@ -2,9 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Server;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class ServerMemberController extends Controller
 {
-    //
+    /**
+     * Show form to join server
+     *
+     * @param int $id
+     * @return Response
+     */
+    public function join(int $id)
+    {
+        $server = Server::findOrFail($id);
+        return $server->members->contains(Auth::user())
+            ? redirect(route('servers.show', ['server' => $id]))
+            : view('server_members.join')->with('server', $server);
+    }
+
+    /**
+     * Add member to server
+     *
+     * @param int $id
+     * @return Response
+     */
+    public function add(int $id)
+    {
+        Server::findOrFail($id)->members()->attach(Auth::id());
+        return redirect(route('servers.show', ['server' => $id]));
+    }
 }
