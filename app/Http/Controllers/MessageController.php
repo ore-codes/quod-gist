@@ -80,6 +80,12 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $message = Message::findOrFail($id);
+        if ($message->id === Auth::id()) {
+            $message->delete();
+            return response()->json('', 204);
+        } else {
+            return response()->json('Unauthorized', 403);
+        }
     }
 }

@@ -37,3 +37,4 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 Route::get('/servers/{server}/messages', [MessageController::class, 'index']);
 Route::post('/servers/{server}/messages', [MessageController::class, 'store']);
 Route::put('/messages/{id}', [MessageController::class, 'update']);
+Route::delete('/messages/{id}', [MessageController::class, 'destroy']);
