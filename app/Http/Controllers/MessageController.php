@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Message\CreateMessage;
+use App\Actions\Message\UpdateMessage;
 use App\Http\Requests\NewChatMessage;
+use App\Http\Requests\UpdateMessageRequest;
 use App\Models\Message;
 use App\Models\Server;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,13 +60,16 @@ class MessageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param UpdateMessageRequest $request
+     * @param int $id
+     * @param UpdateMessage $editor
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(UpdateMessageRequest $request, int $id, UpdateMessage $editor)
     {
-        //
+        $message = $editor->update(Message::findOrFail($id), $request);
+
+        return response()->json(['message' => $message], 200);
     }
 
     /**

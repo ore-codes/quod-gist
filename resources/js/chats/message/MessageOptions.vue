@@ -1,7 +1,7 @@
 <template>
     <div>
-        <icon-button id="edit"></icon-button>
-        <icon-button id="trash"></icon-button>
+        <icon-button id="edit" @click="$emit('edit')"></icon-button>
+        <icon-button id="trash" @click="$emit('delete')"></icon-button>
     </div>
 </template>
 

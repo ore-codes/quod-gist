@@ -8,6 +8,6 @@
     </div>
 
     @push ('scripts')
-        <script src="{{ asset('js/chats.js') }}"></script>
+        <script src="{{ mix('js/chats.js') }}"></script>
     @endpush
 </x-app-layout>
