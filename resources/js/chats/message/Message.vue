@@ -1,19 +1,25 @@
 <template>
-    <div class="m-2 mr-8 p-2 border-2 rounded" :style="`border-color: ${server.color}`">
-        <h5 class="font-bold text-sm text-gray-500 text-right">{{ author.name }}</h5>
-        <pre class="whitespace-pre-wrap break-words"><slot><!--message--></slot></pre>
+    <div class="flex gap-1 justify-between m-2 mr-8">
+        <img :src="profilePhoto" class="w-12 h-12 rounded-full flex-shrink-0 border-2">
+        <div class="flex-grow p-2 bg-white shadow-md rounded-md">
+            <message-header :author="author.name" :date="date|toDate"></message-header>
+            <pre class="whitespace-pre-wrap break-words font-sans"><slot><!--message--></slot></pre>
+        </div>
     </div>
 </template>
 
 <script>
-    import {mapState} from 'vuex';
+    import MessageHeader from "./MessageHeader";
 
     export default {
+        components: {MessageHeader},
         props: {
             author: Object,
+            date: String,
+            profilePhoto: String,
         },
-        computed: {
-            ...mapState(['server'])
+        filters: {
+            toDate: date => new Date(date),
         }
     }
 </script>

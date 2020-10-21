@@ -27,7 +27,10 @@ class MessageController extends Controller
     public function index(int $server)
     {
         return response()->json(
-            Message::where('server_id', $server)->with(['author'])->paginate(20),
+            Message::where('server_id', $server)
+                ->with(['author'])
+                ->latest()
+                ->paginate(10),
             200);
     }
 
@@ -81,11 +84,11 @@ class MessageController extends Controller
     public function destroy($id)
     {
         $message = Message::findOrFail($id);
-        if ($message->id === Auth::id()) {
+        if ($message->author_id === Auth::id()) {
             $message->delete();
             return response()->json('', 204);
         } else {
-            return response()->json('Unauthorized', 403);
+            return response()->json('Unauthorized'.$message->id.':'.Auth::id(), 403);
         }
     }
 }

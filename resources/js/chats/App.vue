@@ -6,10 +6,11 @@
 </template>
 
 <script>
-    import Messages from './message/Messages';
+    import Messages from './Messages';
     import ChatForm from './ChatForm';
 
-    import {mapActions, mapMutations} from 'vuex';
+    import {mapState, mapActions, mapMutations} from 'vuex';
+    import '../bootstrap';
 
     export default {
         components: {
@@ -20,6 +21,9 @@
             server: Object,
             user: Object,
         },
+        computed: {
+            ...mapState(['messages']),
+        },
         methods: {
             ...mapMutations(['setServer', 'setUser']),
             ...mapActions(['fetchMessages']),
@@ -28,6 +32,11 @@
             this.setServer(this.server);
             this.setUser(this.user);
             await this.fetchMessages();
+            /*Echo.private(`chat.${this.server.id}`)
+                .listen('MessageSent', e => {
+                    this.messages.push(e.message);
+                    console.log('message'+e.message);
+                });*/
         }
     }
 </script>

@@ -4,6 +4,7 @@
 namespace App\Actions\Message;
 
 
+use App\Events\MessageSent;
 use App\Http\Requests\NewChatMessage;
 use App\Models\Message;
 use App\Models\Server;
@@ -18,6 +19,8 @@ class CreateMessage
         $message = new Message(['content' => $content]);
         $message->author()->associate($user);
         $server->messages()->save($message);
+
+        broadcast(new MessageSent($user, $message))->toOthers();
 
         return $message;
     }
