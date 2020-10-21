@@ -13,11 +13,9 @@
         components: {
             IconButton,
         },
-        data() {
-            return {
-                newMessage: '',
-            }
-        },
+        data: () => ({
+            newMessage: '',
+        }),
         computed: {
             content() {
                 return this.$slots.default[0].text;

@@ -26,7 +26,10 @@
             content: String,
         },
         computed: {
-            ...mapState(['messages', 'user']),
+            ...mapState({
+                messages: ({messages}) => messages.messages,
+            }),
+            ...mapState(['user']),
         },
         methods: {
             isUserMessage(message) {

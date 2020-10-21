@@ -27,11 +27,9 @@
             id: Number,
             message: String,
         },
-        data() {
-            return {
-                editMode: false,
-            }
-        },
+        data: () => ({
+            editMode: false,
+        }),
         methods: {
             ...mapActions(['updateMessage', 'deleteMessage']),
             async evUpdate(message) {

@@ -1,19 +1,22 @@
 <template>
     <div class="min-h-screen-4/5 flex flex-col justify-between">
+        <load-more-chats v-if="!messageFullyLoaded"></load-more-chats>
         <messages></messages>
         <chat-form></chat-form>
     </div>
 </template>
 
 <script>
+    import LoadMoreChats from "./LoadMoreChats";
     import Messages from './Messages';
     import ChatForm from './ChatForm';
 
-    import {mapState, mapActions, mapMutations} from 'vuex';
+    import {mapState, mapActions, mapMutations, mapGetters} from 'vuex';
     import '../bootstrap';
 
     export default {
         components: {
+            LoadMoreChats,
             Messages,
             ChatForm
         },
@@ -22,7 +25,10 @@
             user: Object,
         },
         computed: {
-            ...mapState(['messages']),
+            ...mapState({
+                messages: ({messages}) => messages.messages,
+            }),
+            ...mapGetters(['messageFullyLoaded'])
         },
         methods: {
             ...mapMutations(['setServer', 'setUser']),
