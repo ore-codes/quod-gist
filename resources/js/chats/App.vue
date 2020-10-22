@@ -1,6 +1,7 @@
 <template>
     <div class="min-h-screen-4/5 flex flex-col justify-between">
         <load-more-chats v-if="!messageFullyLoaded"></load-more-chats>
+        <ellipsis-loader></ellipsis-loader>
         <messages></messages>
         <chat-form></chat-form>
     </div>
@@ -8,6 +9,7 @@
 
 <script>
     import LoadMoreChats from "./LoadMoreChats";
+    import EllipsisLoader from './EllipsisLoader';
     import Messages from './Messages';
     import ChatForm from './ChatForm';
 
@@ -17,6 +19,7 @@
     export default {
         components: {
             LoadMoreChats,
+            EllipsisLoader,
             Messages,
             ChatForm
         },
