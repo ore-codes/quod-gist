@@ -6,6 +6,7 @@
             <message v-else
                      :id="message.id" :author="message.author" :date="message.created_at"
                      :profile-photo="message.author.profile_photo_url">{{ message.content }}</message>
+            <ellipsis-loader v-if="messageLoaders.has(message.id)"></ellipsis-loader>
         </div>
     </div>
 </template>
@@ -15,19 +16,18 @@
 
     import Message from "./message/Message";
     import UserMessage from "./message/UserMessage";
+    import EllipsisLoader from "./EllipsisLoader";
 
     export default {
         components: {
             Message,
-            UserMessage
-        },
-        props: {
-            author: Object,
-            content: String,
+            UserMessage,
+            EllipsisLoader,
         },
         computed: {
             ...mapState({
-                messages: ({messages}) => messages.messages,
+                messages: state => state.messages.messages,
+                messageLoaders: state => state.messages.messageLoaders,
             }),
             ...mapState(['user']),
         },

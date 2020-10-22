@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen-4/5 flex flex-col justify-between">
         <load-more-chats v-if="!messageFullyLoaded"></load-more-chats>
-        <ellipsis-loader></ellipsis-loader>
+        <ellipsis-loader v-if="showLoader"></ellipsis-loader>
         <messages></messages>
         <chat-form></chat-form>
     </div>
@@ -30,6 +30,7 @@
         computed: {
             ...mapState({
                 messages: ({messages}) => messages.messages,
+                showLoader: ({messages}) => messages.showLoader,
             }),
             ...mapGetters(['messageFullyLoaded'])
         },

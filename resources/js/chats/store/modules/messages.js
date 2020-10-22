@@ -5,6 +5,8 @@ export default {
         messages: [],
         totalMessages: 0,
         nextPage: '',
+        showLoader: false,
+        messageLoaders: new Set(),
     }),
     getters: {
         messageCount: state => state.messages.length,
@@ -21,7 +23,13 @@ export default {
             state.nextPage = url;
         },
         addMessages(state, newMessages) {
-            state.messages = [...newMessages, ...state.messages];
+            state.messages.unshift(...newMessages);
+        },
+        addMessageLoader(state, id) {
+            state.messageLoaders.add(id);
+        },
+        deleteMessageLoader(state, id) {
+            state.messageLoaders.delete(id);
         },
     },
     actions: {
@@ -31,28 +39,37 @@ export default {
             })).data;
             resp.message && state.messages.push(resp.message);
         },
-        async fetchMessages({commit, rootState}) {
+        async fetchMessages({commit, state, rootState}) {
+            state.showLoader = true;
             const {data, total, next_page_url} =
                 (await Axios.get(`/servers/${rootState.server.id}/messages`)).data;
             commit('setMessages', data.reverse());
             commit('setTotalMessages', total);
             commit('setNextPage', next_page_url);
+            state.showLoader = false;
         },
-        async loadMoreMessages({commit, state, rootState}) {
+        async loadMoreMessages({commit, state}) {
+            state.showLoader = true;
             const {data, total, next_page_url} = (await Axios.get(state.nextPage)).data;
             commit('addMessages', data.reverse());
             commit('setTotalMessages', total);
             commit('setNextPage', next_page_url);
+            state.showLoader = false;
         },
-        async updateMessage({state}, [messageId, message]) {
+        async updateMessage({commit, state}, [messageId, message]) {
+            commit('addMessageLoader', messageId);
             const sameId = ({id}) => messageId === id;
             await Axios.put(`/messages/${messageId}`, {message});
+            await setTimeout(() => '', 9000);
             state.messages.find(sameId).content = message;
+            commit('deleteMessageLoader', messageId);
         },
-        async deleteMessage({state}, id) {
+        async deleteMessage({commit, state}, id) {
+            commit('addMessageLoader', id);
             const index = state.messages.findIndex(({id: msgId}) => msgId === id);
             state.messages.splice(index, 1);
             await Axios.delete(`/messages/${id}`);
+            commit('deleteMessageLoader', id);
         },
     }
 }
