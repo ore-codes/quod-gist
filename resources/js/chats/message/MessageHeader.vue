@@ -1,7 +1,10 @@
 <template>
     <h5 class="flex justify-between text-sm">
         <span class="font-bold text-gray-800">{{ author }}</span>
-        <span class="text-gray-400">{{ date|daysAgo }}</span>
+        <span class="inline-flex items-center text-gray-400">
+            <svg class="inline w-3 h-3 mr-1"><use xlink:href="#icon-clock"></use></svg>
+            <span>{{ date|daysAgo }}</span>
+        </span>
     </h5>
 </template>
 

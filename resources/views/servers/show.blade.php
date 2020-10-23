@@ -1,6 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="app-header" style="color: {{ $server->color }}">{{ $server->name }}</h2>
+        <h2 class="app-header flex justify-between" style="color: {{ $server->color }}">
+            <span>{{ $server->name }}</span>
+            <button class="text-red-500 text-sm font-semibold">
+                <span>Leave server</span>
+            </button>
+        </h2>
     </x-slot>
 
     <div id="app" class="max-w-3xl mx-auto my-6 md:rounded shadow bg-gray-50">

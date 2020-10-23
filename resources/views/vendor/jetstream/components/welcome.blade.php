@@ -24,14 +24,9 @@
                  Manage your profile details. Set or remove your profile photo. Enable two-factor authentication and manage your browsing sessions across all your browsers.
             </div>
 
-            <a href="{{ route('profile.show') }}">
-                <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                    <div>View your profile</div>
-
-                        <div class="ml-1 text-indigo-500">
-                            <svg viewBox="0 0 20 20" fill="currentColor" class="arrow-right w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        </div>
-                </div>
+            <a class="mt-3 flex items-center text-sm font-semibold text-indigo-700" href="{{ route('profile.show') }}">
+                <span>View your profile</span>
+                <svg class="ml-1 text-indigo-500 w-4 h-4"><use xlink:href="#icon-arrow-right2" /></svg>
             </a>
         </div>
     </div>
@@ -47,14 +42,9 @@
                 A chat server is an independent thread where users can join to chat with each other. The chats are secured with end-to-end encryption. The chats may only be seen by the members of the server.
             </div>
 
-            <a href="{{ route('servers.index') }}">
-                <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                        <div>Start chatting</div>
-
-                        <div class="ml-1 text-indigo-500">
-                            <svg viewBox="0 0 20 20" fill="currentColor" class="arrow-right w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        </div>
-                </div>
+            <a class="mt-3 flex items-center text-sm font-semibold text-indigo-700" href="{{ route('servers.index') }}">
+                <span>Start chatting</span>
+                <svg class="ml-1 text-indigo-500 w-4 h-4"><use xlink:href="#icon-arrow-right2" /></svg>
             </a>
         </div>
     </div>
