@@ -1,6 +1,6 @@
 <template>
     <div class="flex gap-1 justify-between m-2 mr-8">
-        <img :src="profilePhoto" class="w-12 h-12 rounded-full flex-shrink-0 border-2">
+        <img :src="author.profile_photo_url" class="w-12 h-12 rounded-full flex-shrink-0 border-2">
         <div class="flex-grow p-2 bg-white shadow-md rounded-md">
             <message-header :author="author.name" :date="date|toDate"></message-header>
             <pre class="whitespace-pre-wrap break-words font-sans"><slot><!--message--></slot></pre>
@@ -16,7 +16,6 @@
         props: {
             author: Object,
             date: String,
-            profilePhoto: String,
         },
         filters: {
             toDate: date => new Date(date),

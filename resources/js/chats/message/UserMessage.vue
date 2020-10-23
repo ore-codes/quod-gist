@@ -6,7 +6,7 @@
             <pre class="whitespace-pre-wrap break-words font-sans">{{ message }}</pre>
             <details class="border-t">
                 <summary class="text-sm">Options</summary>
-                <message-options @edit="editMode = true" @delete="deleteMessage(id)"></message-options>
+                <message-options @edit="editMode = true" @delete="evDelete"></message-options>
             </details>
         </div>
     </div>
@@ -35,6 +35,10 @@
             async evUpdate(message) {
                 await this.updateMessage([this.id, message]);
                 this.editMode = false;
+            },
+            async evDelete() {
+                confirm('Are you sure you want to delete the message?') &&
+                    await this.deleteMessage(this.id);
             },
         }
     }

@@ -3,9 +3,9 @@
         <div class="self-stretch" v-for="message in messages" :key="message.id">
             <user-message v-if="isUserMessage(message)"
                           :id="message.id" :message="message.content"></user-message>
-            <message v-else
-                     :id="message.id" :author="message.author" :date="message.created_at"
-                     :profile-photo="message.author.profile_photo_url">{{ message.content }}</message>
+            <message v-else :id="message.id"
+                     :author="message.author" :date="message.created_at">{{ message.content }}</message>
+
             <ellipsis-loader v-if="messageLoaders.has(message.id)"></ellipsis-loader>
         </div>
     </div>
