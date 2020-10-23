@@ -21,11 +21,14 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/servers/{id}/members/join', [ServerMemberController::class, 'join'])
+    Route::get('/join/{id}', [ServerMemberController::class, 'join'])
         ->name('server_members.join');
 
-    Route::post('/server/{id}/members', [ServerMemberController::class, 'add'])
+    Route::post('/servers/{id}/members', [ServerMemberController::class, 'add'])
         ->name('server_members.add');
+
+    Route::delete('/servers/{serverId}/members/{memberId?}', [ServerMemberController::class, 'remove'])
+        ->name('server_members.remove');
 
     Route::resource('servers', ServerController::class);
 

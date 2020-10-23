@@ -2,7 +2,8 @@
     <div class="min-h-screen-4/5 flex flex-col justify-between">
         <load-more-chats v-if="!messageFullyLoaded"></load-more-chats>
         <ellipsis-loader v-if="showLoader"></ellipsis-loader>
-        <messages></messages>
+        <div v-if="noMessages" class="flex flex-grow justify-center items-center text-sm text-gray-400">No messages</div>
+        <messages v-else></messages>
         <chat-form></chat-form>
     </div>
 </template>
@@ -32,7 +33,10 @@
                 messages: ({messages}) => messages.messages,
                 showLoader: ({messages}) => messages.showLoader,
             }),
-            ...mapGetters(['messageFullyLoaded'])
+            ...mapGetters(['messageFullyLoaded']),
+            noMessages() {
+                return ! this.messages.length;
+            },
         },
         methods: {
             ...mapMutations(['setServer', 'setUser']),
