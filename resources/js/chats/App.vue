@@ -13,8 +13,9 @@
     import Messages from './Messages';
     import ChatForm from './ChatForm';
 
-    import {mapState, mapActions, mapMutations, mapGetters} from 'vuex';
+    import {mapState, mapActions, mapGetters} from 'vuex';
     import '../bootstrap';
+    import {SETUP} from "./store/modules/mutation-types";
 
     export default {
         components: {
@@ -35,12 +36,13 @@
             ...mapGetters(['messageFullyLoaded'])
         },
         methods: {
-            ...mapMutations(['setServer', 'setUser']),
             ...mapActions(['fetchMessages']),
         },
         async mounted() {
-            this.setServer(this.server);
-            this.setUser(this.user);
+            this.$store.commit(SETUP, {
+                server: this.server,
+                user: this.user,
+            });
             await this.fetchMessages();
             /*Echo.private(`chat.${this.server.id}`)
                 .listen('MessageSent', e => {
