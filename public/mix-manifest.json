@@ -1,17 +1,5 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/chats.js": "/js/chats.js",
-    "/js/chats.be886021b90a7d26488f.hot-update.js": "/js/chats.be886021b90a7d26488f.hot-update.js",
-    "/js/chats.f67444d9571817716513.hot-update.js": "/js/chats.f67444d9571817716513.hot-update.js",
-    "/js/chats.f754008dd4e090ff88e6.hot-update.js": "/js/chats.f754008dd4e090ff88e6.hot-update.js",
-    "/js/chats.30be04062e1df9488da2.hot-update.js": "/js/chats.30be04062e1df9488da2.hot-update.js",
-    "/js/chats.581a15d9a480fca1f85f.hot-update.js": "/js/chats.581a15d9a480fca1f85f.hot-update.js",
-    "/js/chats.a79d1431b728204a5812.hot-update.js": "/js/chats.a79d1431b728204a5812.hot-update.js",
-    "/js/chats.7c0b4634b1d96aa19ee1.hot-update.js": "/js/chats.7c0b4634b1d96aa19ee1.hot-update.js",
-    "/js/app.8252336ffba7bfd63772.hot-update.js": "/js/app.8252336ffba7bfd63772.hot-update.js",
-    "/js/chats.0480cf2be8b590ecce8b.hot-update.js": "/js/chats.0480cf2be8b590ecce8b.hot-update.js",
-    "/js/chats.801b62565a8ccc43666e.hot-update.js": "/js/chats.801b62565a8ccc43666e.hot-update.js",
-    "/js/chats.b26183d476e16e1824ba.hot-update.js": "/js/chats.b26183d476e16e1824ba.hot-update.js",
-    "/js/chats.35a0e3de2b6e1e81a79a.hot-update.js": "/js/chats.35a0e3de2b6e1e81a79a.hot-update.js"
+    "/js/chats.js": "/js/chats.js"
 }
