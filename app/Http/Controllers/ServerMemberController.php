@@ -42,7 +42,7 @@ class ServerMemberController extends Controller
      * @param int $memberId
      * @return JsonResponse
      */
-    public function remove(int $serverId, int $memberId) {
+    public function remove(int $serverId, ?int $memberId = null) {
         Server::findOrFail($serverId)->members()->detach($memberId ?? Auth::id());
         return response()->json('', 204);
     }

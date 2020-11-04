@@ -15,8 +15,12 @@
         </div>
     </x-slot>
 
-    <div id="app" class="max-w-3xl mx-auto my-6 md:rounded shadow bg-gray-50">
-        <app :server="{{ $server }}" :user="{{ Auth::user() }}"></app>
+    <div class="flex flex-col gap-2">
+        <x-server.members :server="$server"></x-server.members>
+
+        <div id="app" class=" flex-grow max-w-3xl mx-auto my-6 md:rounded shadow bg-gray-50">
+            <app :server="{{ $server }}" :user="{{ Auth::user() }}"></app>
+        </div>
     </div>
 
     @push ('scripts')
