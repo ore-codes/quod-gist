@@ -15,10 +15,12 @@
         </div>
     </x-slot>
 
-    <div class="flex flex-col gap-2">
-        <x-server.members :server="$server"></x-server.members>
+    <div class="flex flex-col md:flex-row gap-2">
+        <div class="mt-6" style="min-width: 20rem;">
+            <x-server.members :server="$server"></x-server.members>
+        </div>
 
-        <div id="app" class=" flex-grow max-w-3xl mx-auto my-6 md:rounded shadow bg-gray-50">
+        <div id="app" class="flex-grow md:mx-10 my-6 md:rounded shadow bg-gray-50">
             <app :server="{{ $server }}" :user="{{ Auth::user() }}"></app>
         </div>
     </div>

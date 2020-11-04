@@ -1,4 +1,4 @@
-<div class="m-2 p-2 shadow-lg rounded" x-data="{color: '{{ $server->color }}'}"
+<div class="mx-2 p-2 shadow-lg rounded" x-data="{color: '{{ $server->color }}'}"
      x-bind:style="`color: ${invertColor(color, true)}; background-color: ${color};`">
     <details>
         <summary class="py-1 text-xl">{{ $server->name }}</summary>
