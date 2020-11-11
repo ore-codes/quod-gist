@@ -26,6 +26,7 @@
     </div>
 
     @push ('scripts')
+        <script src="{{ asset('js/microlight.js') }}"></script>
         <script src="{{ mix('js/app.js') }}"></script>
         <script src="{{ mix('js/chats.js') }}"></script>
     @endpush

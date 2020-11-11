@@ -17,3 +17,15 @@
 .svg-icon {
     @apply w-8 h-8;
 }
+
+.message {
+    @apply font-sans;
+}
+
+.message h1, .message h2, .message h3 {
+    @apply text-gray-700 text-xl font-bold;
+}
+
+.message code {
+    @apply bg-gray-300 p-2 block overflow-hidden rounded;
+}

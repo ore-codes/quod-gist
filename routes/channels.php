@@ -19,7 +19,7 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 });
 
 Broadcast::channel('chat.{serverId}', function ($user, $serverId) {
-    return Server::find($serverId)->contains(function($member) use ($user) {
+    return Server::find($serverId)->members->contains(function($member) use ($user) {
         return $member->id === $user->id;
     });
 });

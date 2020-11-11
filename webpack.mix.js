@@ -1,6 +1,8 @@
 const mix = require('laravel-mix');
 const path = require('path');
 
+require('laravel-mix-remove-flow-types');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -18,7 +20,9 @@ mix.webpackConfig({
     }
 });
 
-mix.js('resources/js/app.js', 'public/js')
+mix.removeFlowTypes()
+    .copy('node_modules/microlight/microlight.js', 'public/js/microlight.js')
+    .js('resources/js/app.js', 'public/js')
     .js('resources/js/chats.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
