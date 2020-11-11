@@ -30,7 +30,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::delete('/servers/{serverId}/members/{memberId?}', [ServerMemberController::class, 'remove'])
         ->name('server_members.remove');
 
-    Route::resource('servers', ServerController::class);
+    Route::get('/servers', [ServerController::class, 'index'])
+        ->name('servers.index');
+    Route::get('/servers/{id}', [ServerController::class, 'show'])
+        ->name('servers.show');
 
     Route::get('/dashboard', function () {
         return view('dashboard');

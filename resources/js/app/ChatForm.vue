@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="storeMessage(message)" class="flex-grow-0 h-auto bg-cool-gray-200 border-t-2 px-2 py-1">
+    <form @submit.prevent="evStore" class="flex-grow-0 h-auto bg-cool-gray-200 border-t-2 px-2 py-1">
         <h4 class="font-bold">New message</h4>
         <div class="flex items-center w-full md:p-4">
             <textarea v-model="message" placeholder="New message" class="flex-grow form-textarea resize-none rounded-md shadow-sm m-2"></textarea>
@@ -21,6 +21,10 @@
         },
         methods: {
             ...mapActions(['storeMessage']),
+            async evStore() {
+                await this.storeMessage(this.message);
+                this.message = '';
+            }
         }
     }
 </script>
