@@ -74,7 +74,7 @@ const actions = {
     },
     async updateMessage({commit, state}, [id, newMessage]) {
         commit(ADD_MESSAGE_LOADER, id);
-        await Axios.put(`/messages/${id}`, {newMessage});
+        await Axios.put(`/messages/${id}`, {message: newMessage});
         commit(EDIT_MESSAGE, {id, newMessage});
     },
     async deleteMessage({commit, state}, id) {

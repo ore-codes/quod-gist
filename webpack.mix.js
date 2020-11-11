@@ -21,7 +21,7 @@ mix.webpackConfig({
 });
 
 mix.removeFlowTypes()
-    .sourceMaps()
+    .copy('node_modules/microlight/microlight.js', 'public/js/microlight.js')
     .js('resources/js/app.js', 'public/js')
     .js('resources/js/chats.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
