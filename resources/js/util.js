@@ -1,6 +1,6 @@
-import {floor} from 'lodash';
+const {floor} = require('lodash');
 
-export function validateHex(hex) {
+function validateHex(hex) {
     if (hex.indexOf('#') === 0)
         hex = hex.substr(1);
 
@@ -15,8 +15,8 @@ export function validateHex(hex) {
     return hex;
 }
 
-export function hexToRGB(hex) {
-    hex = validateHex(hex);
+function hexToRGB(hex, validateCb = validateHex) {
+    hex = validateCb(hex);
     const hexToDecimal = (acc, name, index) => ({
         ...acc,
         [name]: parseInt(hex.substr(index *= 2, 2), 16)
@@ -25,7 +25,14 @@ export function hexToRGB(hex) {
     return ['r', 'g', 'b'].reduce(hexToDecimal, {});
 }
 
-export function dateDiffInDays(date1, date2) {
+function dateDiffInDays(date1, date2) {
+    if (! (date1 instanceof Date && date2 instanceof Date)) {
+        throw new Error('date1 and date2 must be instances of Date');
+    }
+
     const utc = date => Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+
     return floor((utc(date2) - utc(date1)) / (1000 * 60 * 60 * 24));
 }
+
+module.exports = {validateHex, hexToRGB, dateDiffInDays};

@@ -1,5 +1,4 @@
-import {hexToRGB, validateHex} from "./util";
-
+const {hexToRGB, validateHex} = require('./util');
 require('./bootstrap');
 
 window.invertColor = function invertColor (hex, bw) {
@@ -12,6 +11,7 @@ window.invertColor = function invertColor (hex, bw) {
     }
 
     const invertCodes = (inverted, code) => inverted + (255 - code).toString(16).padStart(2, '0');
+
     return Object.values(rgb).reduce(invertCodes, '#');
 };
 
