@@ -15,8 +15,9 @@
     import ChatForm from './ChatForm';
 
     import {mapState, mapActions, mapGetters} from 'vuex';
-    require('../bootstrap');
-    import {PUSH_MESSAGES, SETUP} from "./store/modules/mutation-types";
+
+    import './../bootstrap';
+    import {PUSH_MESSAGES, REMOVE_MESSAGE, SETUP} from "./store/modules/mutation-types";
 
     export default {
         components: {
@@ -49,9 +50,8 @@
             });
             await this.fetchMessages();
             window.Echo.private(`chat.${this.server.id}`)
-                .listen('MessageSent', e => {
-                    this.$store.commit(PUSH_MESSAGES, [e.message]);
-                });
+                .listen('MessageSent', e => this.$store.commit(PUSH_MESSAGES, [e.message]))
+                .listen('MessageDeleted', e => this.$store.commit(REMOVE_MESSAGE, e.id));
         }
     }
 </script>

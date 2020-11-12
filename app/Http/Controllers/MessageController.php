@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\Message\CreateMessage;
 use App\Actions\Message\UpdateMessage;
+use App\Events\MessageDeleted;
 use App\Http\Requests\NewChatMessage;
 use App\Http\Requests\UpdateMessageRequest;
 use App\Models\Message;
@@ -84,8 +85,10 @@ class MessageController extends Controller
     public function destroy($id)
     {
         $message = Message::findOrFail($id);
+        $serverId = $message->server_id;
         if ($message->author_id === Auth::id()) {
             $message->delete();
+            broadcast(new MessageDeleted(Auth::user(), $id, $serverId))->toOthers();
             return response()->json('', 204);
         } else {
             return response()->json('Unauthorized'.$message->id.':'.Auth::id(), 403);
