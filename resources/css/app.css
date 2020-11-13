@@ -26,6 +26,11 @@
     @apply text-gray-700 text-xl font-bold;
 }
 
+.message pre {
+    @apply whitespace-pre-wrap break-words;
+    text-align: justify;
+}
+
 .message code {
     @apply bg-gray-300 p-2 block overflow-hidden rounded;
 }
