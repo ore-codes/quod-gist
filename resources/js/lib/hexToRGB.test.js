@@ -1,6 +1,6 @@
-const {hexToRGB} = require('../../util');
+import hexToRGB from './hexToRGB.js';
 
-describe('util.hexToRGB', () => {
+describe('lib/hexToRGB', () => {
     test('validateCb is called once', () => {
         const validateCb = jest.fn(hex => hex);
 

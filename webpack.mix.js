@@ -17,7 +17,7 @@ require('laravel-mix-remove-flow-types');
 mix.webpackConfig({
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
-    }
+    },
 });
 
 mix.removeFlowTypes()

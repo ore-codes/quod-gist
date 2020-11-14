@@ -1,6 +1,6 @@
-const {validateHex} = require('../../util');
+import validateHex from './validateHex.js';
 
-describe('util.validateHex', () => {
+describe('lib/validateHex', () => {
     test('makes no change if hex code is 6-digit and valid', () => {
         expect(validateHex('0123F4')).toBe('0123F4');
     });
