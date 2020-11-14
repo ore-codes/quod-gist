@@ -1,7 +1,8 @@
 {
     "private": true,
     "scripts": {
-        "test": "jest",
+        "test": "cross-env NODE_ENV=test jest",
+        "tdd": "npm run test -- --watch --notify",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
@@ -10,9 +11,13 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
+    "jest": {
+        "roots": ["<<rootDir>/resources/assets/js/"]
+    },
     "devDependencies": {
         "@tailwindcss/ui": "^0.5.0",
         "@vue/test-utils": "^1.1.1",
+        "babel-jest": "^26.6.3",
         "cross-env": "^7.0",
         "flow-bin": "^0.137.0",
         "laravel-mix": "^5.0.1",
