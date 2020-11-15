@@ -10,7 +10,7 @@
 
 <script>
     import {cond, round} from "lodash";
-    import {dateDiffInDays} from "../../util";
+    import dateDiffInDays from "./../../lib/dateDiffInDays.js";
 
     export default {
         props: {
