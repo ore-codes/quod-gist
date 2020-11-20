@@ -21,7 +21,7 @@
             daysAgo(date) {
                 const diff = dateDiffInDays(date, new Date());
                 const condEntries = [
-                    [diff < 1, 'today'],
+                    [diff < 1,  `today ${date.getHours()}:${date.getMinutes()}`],
                     [diff === 1, 'a day ago'],
                     [diff <= 31, `${diff} days ago`],
                     [diff <= 365, `${round(diff / 31)} months ago`],
