@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Str;
 
-$DATABASE_URL=parse_url(env('DATABASE_URL'));
-
 return [
 
     /*
@@ -17,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,12 +65,12 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            // 'url' => env('DATABASE_URL'),
-            'host' => $DATABASE_URL['host'], //env('DB_HOST', '127.0.0.1'),
-            'port' => $DATABASE_URL['port'], // env('DB_PORT', '5432'),
-            'database' => ltrim($DATABASE_URL['path'], '/'), // env('DB_DATABASE', 'forge'),
-            'username' => $DATABASE_URL['user'], // env('DB_USERNAME', 'forge'),
-            'password' => $DATABASE_URL['pass'],// env('DB_PASSWORD', ''),
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
