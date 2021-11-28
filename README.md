@@ -38,3 +38,6 @@ To start Quod-Gist locally, it is expected to have the following installed:
 ![](https://img.shields.io/badge/Backend-Laravel-informational?style=flat&logo=laravel&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/badge/Frontend-Vue-informational?style=flat&logo=vue.js&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/badge/UI-Tailwind-informational?style=flat&logo=tailwind-css&logoColor=white&color=2bbc8a)
+
+## Hosted on Heroku!
+![https://quod-gist.herokuapp.com](https://quod-gist.herokuapp.com)
