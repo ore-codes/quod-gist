@@ -40,4 +40,4 @@ To start Quod-Gist locally, it is expected to have the following installed:
 ![](https://img.shields.io/badge/UI-Tailwind-informational?style=flat&logo=tailwind-css&logoColor=white&color=2bbc8a)
 
 ## Hosted on Heroku!
-[https://quod-gist-chat.herokuapp.com](https://quod-gist-chat.herokuapp.com)
+[http://quod-gist-chat.herokuapp.com](http://quod-gist-chat.herokuapp.com)
