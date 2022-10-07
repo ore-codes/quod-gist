@@ -32,7 +32,7 @@ class ServerMemberController extends Controller
     public function add(int $id)
     {
         Server::findOrFail($id)->members()->attach(Auth::id());
-        return redirect(route('servers.show', ['server' => $id]));
+        return redirect(route('servers.show', ['id' => $id]));
     }
 
     /**
