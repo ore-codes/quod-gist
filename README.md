@@ -3,7 +3,7 @@
 <p>Laravel based chat app for coders.</p>
 
 ## Try it out
-[https://quod-gist.herokuapp.com/](https://quod-gist.herokuapp.com/)
+[http://quod-gist-chat.herokuapp.com/](https://quod-gist-chat.herokuapp.com/)
 
 ## Local installation
 To start Quod-Gist locally, it is expected to have the following installed:
