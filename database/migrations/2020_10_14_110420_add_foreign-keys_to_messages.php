@@ -17,7 +17,7 @@ class AddForeignKeysToMessages extends Migration
             $table->unsignedBigInteger('server_id');
             $table->unsignedBigInteger('author_id');
 
-            $table->foreign('server_id')->references('id')->on('servers');
+            $table->foreign('server_id')->references('id')->on('_servers');
             $table->foreign('author_id')->references('id')->on('users');
         });
     }

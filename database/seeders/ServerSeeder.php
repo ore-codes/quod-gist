@@ -17,7 +17,7 @@ class ServerSeeder extends Seeder
     {
         $servers = ['PHP', 'JS', 'Clojure', 'Java', 'Go', 'Ruby', 'Python', 'Kotlin', 'C++'];
         foreach ($servers as $server) {
-            DB::table('servers')->insert([
+            DB::table('_servers')->insert([
                 'name' => $server,
                 'color' => Color::hexColor(),
             ]);

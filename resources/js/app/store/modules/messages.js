@@ -69,8 +69,10 @@ const actions = {
         commit(UNSHIFT_MESSAGES, resp);
     },
     async loadMoreMessages({commit, state}) {
-        commit(SHOW_LOADER);
-        commit(UNSHIFT_MESSAGES, (await Axios.get(state.nextPage)).data);
+        if (state.nextPage) {
+            commit(SHOW_LOADER);
+            commit(UNSHIFT_MESSAGES, (await Axios.get(state.nextPage)).data);
+        }
     },
     async updateMessage({commit, state}, [id, newMessage]) {
         commit(ADD_MESSAGE_LOADER, id);

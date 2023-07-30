@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Server extends Model
 {
     use HasFactory;
+    protected $table = "_servers";
 
     protected $fillable = ['name'];
 
